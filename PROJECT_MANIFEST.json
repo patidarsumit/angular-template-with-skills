@@ -9,6 +9,17 @@
   "rxjsLinting": "auto",
   "budgetProfile": "strict",
   "lintersConfigured": true,
+  "integrations": [
+    {
+      "name": "@angular/material",
+      "version": "21.2.5",
+      "source": "https://material.angular.dev/",
+      "notes": [
+        "Installed via ng add",
+        "Configured Material 3 light and dark themes with design tokens"
+      ]
+    }
+  ],
   "skillVersions": {
     "angular-setup-project": "1.0",
     "angular-linters": "1.0",
