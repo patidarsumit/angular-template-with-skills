@@ -1,3 +1,12 @@
+:where(.app-form-field) {
+  display: block;
+  width: 100%;
+}
+
+:where(.app-form-field .mat-mdc-form-field) {
+  width: 100%;
+}
+
 :where(input, textarea, select):not(.mat-mdc-input-element) {
   width: 100%;
   min-height: 2.75rem;

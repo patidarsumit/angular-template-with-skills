@@ -83,6 +83,121 @@
     }
   </section>
 
+  <section class="form-showcase">
+    <div class="form-showcase__header">
+      <div>
+        <p class="hero-kicker">Shared form primitives</p>
+        <h2>Angular 21 standalone fields for real product workflows</h2>
+      </div>
+      <p class="form-showcase__intro">
+        Each field is standalone, typed, and driven through reactive forms so feature modules can
+        compose them without rebuilding the Material wiring every time.
+      </p>
+    </div>
+
+    <div class="form-showcase__grid">
+      <mat-card class="form-showcase__card">
+        <mat-card-header>
+          <mat-card-title>Profile setup form</mat-card-title>
+          <mat-card-subtitle>Shared components inside a typed reactive form</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form class="form-showcase__form">
+            <div class="form-showcase__toolbar">
+              <button mat-stroked-button type="button" (click)="revealFormErrors()">
+                <mat-icon>rule</mat-icon>
+                Validate fields
+              </button>
+            </div>
+
+            <div class="form-showcase__two-up">
+              <app-text-field
+                [control]="profileForm.controls.fullName"
+                label="Full name"
+                placeholder="Alex Morgan"
+                hint="Used for profile and approvals"
+              />
+
+              <app-text-field
+                [control]="profileForm.controls.headline"
+                label="Headline"
+                placeholder="Lead frontend engineer"
+                hint="This appears under your name"
+              />
+            </div>
+
+            <div class="form-showcase__two-up">
+              <app-select-field
+                [control]="profileForm.controls.role"
+                [options]="roleOptions"
+                label="Role"
+                hint="Choose the closest craft discipline"
+              />
+
+              <app-autocomplete-field
+                [control]="profileForm.controls.country"
+                [options]="countryOptions"
+                label="Country"
+                placeholder="Start typing a country"
+                hint="Autocomplete works with typed filtering"
+              />
+            </div>
+
+            <app-textarea-field
+              [control]="profileForm.controls.bio"
+              label="Narrative bio"
+              placeholder="Tell the team how you think, build, and collaborate."
+              hint="Reusable textarea with the same Material shell"
+              [rows]="5"
+            />
+
+            <div class="form-showcase__two-up form-showcase__two-up--choices">
+              <app-radio-field
+                [control]="profileForm.controls.workspace"
+                [options]="workspaceOptions"
+                label="Work preference"
+                hint="Standalone radio field primitive"
+              />
+
+              <app-select-field
+                [control]="profileForm.controls.team"
+                [options]="teamOptions"
+                label="Team"
+                hint="Used for default access and dashboards"
+              />
+            </div>
+
+            <div class="form-showcase__toggles">
+              <app-switch-field
+                [control]="profileForm.controls.subscribe"
+                label="Enable product release updates"
+                hint="Slide toggle primitive for settings flows"
+              />
+
+              <app-checkbox-field
+                [control]="profileForm.controls.termsAccepted"
+                label="I confirm the profile information is correct"
+                hint="Checkbox primitive for consent and compliance flows"
+              />
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="form-showcase__card form-showcase__card--preview">
+        <mat-card-header>
+          <mat-card-title>Live value preview</mat-card-title>
+          <mat-card-subtitle>Helpful for feature teams and component QA</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <pre class="form-showcase__preview">{{ formValuePreview() | json }}</pre>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
   <section class="tailwind-proof">
     <div class="tailwind-proof__inner">
       <div class="tailwind-proof__copy">
