@@ -1,0 +1,33 @@
+.app-table {
+  width: 100%;
+  overflow: hidden;
+  border: var(--app-border-subtle);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-raised);
+  box-shadow: var(--app-shadow-xs);
+}
+
+.app-table table {
+  width: 100%;
+}
+
+.app-table th,
+.app-table td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+}
+
+.app-table th {
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-label-large);
+  background: color-mix(in srgb, var(--mat-sys-surface-container-high) 92%, transparent);
+}
+
+.app-table td {
+  color: var(--app-text-muted);
+  border-top: 1px solid color-mix(in srgb, var(--mat-sys-outline) 14%, transparent);
+}
+
+.app-table tr:hover td {
+  background: color-mix(in srgb, var(--mat-sys-primary) 5%, transparent);
+}

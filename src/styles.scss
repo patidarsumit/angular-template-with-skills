@@ -1,16 +1,14 @@
 @use '@angular/material' as mat;
-
-body {
-  --app-shell-max-width: 1120px;
-  --app-radius-xl: 32px;
-  --app-radius-lg: 24px;
-  --app-radius-md: 18px;
-  --app-shadow-soft: 0 24px 80px rgb(20 18 40 / 14%);
-  --app-page-bg: #f6f0fa;
-  --app-page-bg-alt: #efe7f5;
-  --app-glow: rgb(155 102 238 / 22%);
-  --app-brand-gradient: linear-gradient(135deg, #6750a4, #7d65c1 54%, #9469ff);
-}
+@use './styles/001-reset' as *;
+@use './styles/002-variables' as *;
+@use './styles/003-graphics' as *;
+@use './styles/004-typography' as *;
+@use './styles/005-utility' as *;
+@use './styles/006-forms' as *;
+@use './styles/007-table' as *;
+@use './styles/008-grid' as *;
+@use './styles/009-dialogs' as *;
+@use './styles/010-layouts' as *;
 
 html {
   height: 100%;
@@ -94,33 +92,4 @@ body.theme-dark {
       outline-variant: #49454e,
     )
   );
-
-  --app-page-bg: #0f0d14;
-  --app-page-bg-alt: #17131f;
-  --app-glow: rgb(178 136 255 / 18%);
-  --app-brand-gradient: linear-gradient(135deg, #cfbcff, #d8b4fe 46%, #ffb2c5);
-  --app-shadow-soft: 0 28px 80px rgb(0 0 0 / 35%);
-}
-
-body {
-  color-scheme: light;
-  background-color: var(--app-page-bg);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-  margin: 0;
-  min-height: 100%;
-  transition:
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-body.theme-dark {
-  color-scheme: dark;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
 }

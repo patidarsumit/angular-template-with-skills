@@ -79,7 +79,7 @@
     ),
     color-mix(in srgb, var(--mat-sys-surface-container-high) 86%, white 14%);
   border: 1px solid color-mix(in srgb, var(--mat-sys-outline) 36%, transparent);
-  box-shadow: var(--app-shadow-soft);
+  box-shadow: var(--app-shadow-md);
 }
 
 .hero-copy h2 {
@@ -105,7 +105,7 @@
 .token-card {
   border-radius: var(--app-radius-xl);
   background: color-mix(in srgb, var(--mat-sys-surface-container) 86%, transparent);
-  box-shadow: var(--app-shadow-soft);
+  box-shadow: var(--app-shadow-md);
 }
 
 .token-list {
@@ -154,7 +154,7 @@
   height: 100%;
   border-radius: var(--app-radius-lg);
   background: color-mix(in srgb, var(--mat-sys-surface-container) 82%, transparent);
-  box-shadow: var(--app-shadow-soft);
+  box-shadow: var(--app-shadow-md);
 }
 
 .feature-avatar {

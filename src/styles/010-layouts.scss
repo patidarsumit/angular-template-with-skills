@@ -1,0 +1,42 @@
+body {
+  color-scheme: light;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+body.theme-dark {
+  color-scheme: dark;
+}
+
+#app-root,
+app-root {
+  display: block;
+  min-height: 100dvh;
+}
+
+.app-page {
+  width: min(100% - 2rem, var(--app-shell-max-width));
+  margin-inline: auto;
+  padding: var(--app-space-8) 0 var(--app-space-16);
+}
+
+.app-section {
+  margin-top: var(--app-space-8);
+}
+
+.app-card {
+  border-radius: var(--app-radius-lg);
+  background: color-mix(in srgb, var(--mat-sys-surface-container) 86%, transparent);
+  border: var(--app-border-subtle);
+  box-shadow: var(--app-shadow-sm);
+}
+
+.app-toolbar-shell {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--app-surface-overlay);
+  border-bottom: var(--app-border-subtle);
+  backdrop-filter: blur(18px);
+}

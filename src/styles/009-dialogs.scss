@@ -1,0 +1,25 @@
+dialog,
+.app-dialog {
+  width: min(100% - 2rem, 36rem);
+  padding: 0;
+  color: var(--mat-sys-on-surface);
+  background: var(--app-surface-raised);
+  border: var(--app-border-subtle);
+  border-radius: var(--app-radius-lg);
+  box-shadow: var(--app-shadow-lg);
+}
+
+dialog::backdrop,
+.app-dialog-backdrop {
+  background: rgb(15 23 42 / 48%);
+  backdrop-filter: blur(10px);
+}
+
+.app-dialog__header,
+.app-dialog__footer {
+  padding: var(--app-space-5) var(--app-space-6);
+}
+
+.app-dialog__body {
+  padding: 0 var(--app-space-6) var(--app-space-6);
+}

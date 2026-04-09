@@ -1,0 +1,47 @@
+body {
+  background-color: var(--app-page-bg);
+  background-image:
+    radial-gradient(circle at top left, var(--app-glow) 0, transparent 32%),
+    linear-gradient(180deg, var(--app-page-bg) 0%, var(--app-page-bg-alt) 100%);
+  background-attachment: fixed;
+}
+
+.app-surface {
+  background: var(--app-surface-raised);
+  border: var(--app-border-subtle);
+  box-shadow: var(--app-shadow-sm);
+}
+
+.app-surface--elevated {
+  background: color-mix(in srgb, var(--mat-sys-surface-container-high) 88%, transparent);
+  border: var(--app-border-strong);
+  box-shadow: var(--app-shadow-md);
+}
+
+.app-glass {
+  background: var(--app-surface-overlay);
+  backdrop-filter: blur(18px);
+}
+
+.app-gradient-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.app-gradient-border::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--mat-sys-primary) 62%, transparent),
+    color-mix(in srgb, var(--mat-sys-tertiary) 48%, transparent)
+  );
+  content: '';
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}

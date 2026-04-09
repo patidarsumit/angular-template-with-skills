@@ -1,0 +1,45 @@
+:where(input, textarea, select):not(.mat-mdc-input-element) {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.75rem 0.875rem;
+  color: var(--mat-sys-on-surface);
+  background: color-mix(in srgb, var(--mat-sys-surface-container-high) 92%, transparent);
+  border: var(--app-border-subtle);
+  border-radius: var(--app-radius-sm);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+:where(input, textarea, select):not(.mat-mdc-input-element)::placeholder {
+  color: color-mix(in srgb, var(--mat-sys-on-surface-variant) 84%, transparent);
+}
+
+:where(input, textarea, select):not(.mat-mdc-input-element):focus-visible {
+  outline: none;
+  border-color: color-mix(in srgb, var(--mat-sys-primary) 46%, transparent);
+  box-shadow: var(--app-focus-ring);
+}
+
+label {
+  display: inline-flex;
+  gap: var(--app-space-2);
+  align-items: center;
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-label-large);
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: var(--app-space-4);
+  border: var(--app-border-subtle);
+  border-radius: var(--app-radius-md);
+}
+
+legend {
+  padding-inline: var(--app-space-2);
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-medium);
+}

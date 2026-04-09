@@ -1,0 +1,133 @@
+@import 'tailwindcss' prefix(tw);
+
+body.theme-light {
+  --tailwind-proof-bg: #f5f3ff;
+  --tailwind-proof-border: rgba(196, 181, 253, 0.8);
+  --tailwind-proof-text: #0f172a;
+  --tailwind-proof-muted: #475569;
+  --tailwind-proof-eyebrow: #6d28d9;
+  --tailwind-proof-chip-soft-bg: #ffffff;
+  --tailwind-proof-chip-soft-text: #1e293b;
+  --tailwind-proof-chip-brand-bg: #8b5cf6;
+  --tailwind-proof-chip-brand-text: #ffffff;
+  --tailwind-proof-chip-outline-border: #c4b5fd;
+  --tailwind-proof-chip-outline-text: #4c1d95;
+  --tailwind-proof-glow: radial-gradient(
+    circle at top left,
+    rgba(124, 77, 255, 0.16),
+    transparent 34%
+  );
+  --tailwind-proof-shadow: 0 24px 50px rgba(196, 181, 253, 0.35);
+}
+
+body.theme-dark {
+  --tailwind-proof-bg: #2e1065;
+  --tailwind-proof-border: rgba(255, 255, 255, 0.1);
+  --tailwind-proof-text: #ffffff;
+  --tailwind-proof-muted: rgba(255, 255, 255, 0.75);
+  --tailwind-proof-eyebrow: #ede9fe;
+  --tailwind-proof-chip-soft-bg: rgba(255, 255, 255, 0.1);
+  --tailwind-proof-chip-soft-text: #ffffff;
+  --tailwind-proof-chip-brand-bg: #8b5cf6;
+  --tailwind-proof-chip-brand-text: #ffffff;
+  --tailwind-proof-chip-outline-border: rgba(255, 255, 255, 0.2);
+  --tailwind-proof-chip-outline-text: #ffffff;
+  --tailwind-proof-glow: radial-gradient(
+    circle at top left,
+    rgba(124, 77, 255, 0.38),
+    transparent 34%
+  );
+  --tailwind-proof-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+}
+
+.tailwind-proof {
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--tailwind-proof-border);
+  border-radius: 32px;
+  background: var(--tailwind-proof-bg);
+  color: var(--tailwind-proof-text);
+  box-shadow: var(--tailwind-proof-shadow);
+}
+
+.tailwind-proof__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--tailwind-proof-glow);
+}
+
+.tailwind-proof__copy {
+  max-width: 42rem;
+}
+
+.tailwind-proof__eyebrow {
+  margin: 0;
+  color: var(--tailwind-proof-eyebrow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+}
+
+.tailwind-proof__title {
+  margin: 0.75rem 0 0;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.tailwind-proof__body {
+  margin: 0.75rem 0 0;
+  color: var(--tailwind-proof-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.tailwind-proof__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tailwind-proof__chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tailwind-proof__chip--soft {
+  background: var(--tailwind-proof-chip-soft-bg);
+  color: var(--tailwind-proof-chip-soft-text);
+}
+
+.tailwind-proof__chip--brand {
+  background: var(--tailwind-proof-chip-brand-bg);
+  color: var(--tailwind-proof-chip-brand-text);
+}
+
+.tailwind-proof__chip--outline {
+  border: 1px solid var(--tailwind-proof-chip-outline-border);
+  color: var(--tailwind-proof-chip-outline-text);
+}
+
+@media (width >= 768px) {
+  .tailwind-proof__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  .tailwind-proof__title {
+    font-size: 2.25rem;
+  }
+
+  .tailwind-proof__body {
+    font-size: 1rem;
+  }
+}
