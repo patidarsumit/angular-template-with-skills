@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+import { getControlErrorMessage, shouldShowControlError } from './form-field.helpers';
 
 @Component({
   selector: 'app-switch-field',
@@ -10,12 +12,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     <div class="app-choice-field">
       <mat-slide-toggle [formControl]="control()">{{ label() }}</mat-slide-toggle>
 
-      @if (hint()) {
-        <p class="app-choice-field__hint">{{ hint() }}</p>
-      }
-
       @if (hasError()) {
         <p class="app-choice-field__error">{{ getErrorText() }}</p>
+      } @else if (description()) {
+        <p class="app-choice-field__hint">{{ description() }}</p>
+      } @else if (hint()) {
+        <p class="app-choice-field__hint">{{ hint() }}</p>
       }
     </div>
   `,
@@ -46,20 +48,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 export class SwitchFieldComponent {
   readonly control = input.required<FormControl<boolean>>();
   readonly label = input.required<string>();
+  readonly description = input('');
   readonly hint = input('');
+  readonly required = input(false, { transform: booleanAttribute });
   readonly error = input('');
 
   hasError(): boolean {
-    const control = this.control();
-    return control.invalid && (control.touched || control.dirty);
+    return shouldShowControlError(this.control());
   }
 
   getErrorText(): string {
-    const control = this.control();
-    if (control.hasError('required') || control.hasError('requiredTrue')) {
-      return this.error() || `${this.label()} is required.`;
-    }
-
-    return this.error() || 'Please update this setting.';
+    return (
+      this.error() ||
+      getControlErrorMessage(this.control(), this.label(), 'Please update this setting.')
+    );
   }
 }

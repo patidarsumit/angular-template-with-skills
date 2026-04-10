@@ -10,6 +10,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { startWith } from 'rxjs';
 
+import { AppButtonComponent } from './shared/components/button';
+import {
+  AppCardActionsDirective,
+  AppCardBodyDirective,
+  AppCardComponent,
+} from './shared/components/card';
 import {
   AutocompleteFieldComponent,
   CheckboxFieldComponent,
@@ -41,6 +47,10 @@ type ThemeMode = 'light' | 'dark';
     SwitchFieldComponent,
     TextareaFieldComponent,
     TextFieldComponent,
+    AppButtonComponent,
+    AppCardActionsDirective,
+    AppCardBodyDirective,
+    AppCardComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

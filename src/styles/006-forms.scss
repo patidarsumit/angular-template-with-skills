@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.app-form-field__required {
+  color: var(--mat-sys-error);
+}
+
 :where(input, textarea, select):not(.mat-mdc-input-element) {
   width: 100%;
   min-height: 2.75rem;

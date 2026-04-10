@@ -93,3 +93,13 @@ body.theme-dark {
     )
   );
 }
+
+// Tailwind Material conflict fix
+
+.dmc-notched-outline__notch {
+  border-style: normal;
+}
+
+.mat-mdc-icon-button {
+  line-height: normal;
+}

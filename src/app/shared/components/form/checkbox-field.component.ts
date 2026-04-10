@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { getControlErrorMessage, shouldShowControlError } from './form-field.helpers';
 
 @Component({
   selector: 'app-checkbox-field',
@@ -10,12 +12,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     <div class="app-choice-field">
       <mat-checkbox [formControl]="control()">{{ label() }}</mat-checkbox>
 
-      @if (hint()) {
-        <p class="app-choice-field__hint">{{ hint() }}</p>
-      }
-
       @if (hasError()) {
         <p class="app-choice-field__error">{{ getErrorText() }}</p>
+      } @else if (description()) {
+        <p class="app-choice-field__hint">{{ description() }}</p>
+      } @else if (hint()) {
+        <p class="app-choice-field__hint">{{ hint() }}</p>
       }
     </div>
   `,
@@ -46,20 +48,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 export class CheckboxFieldComponent {
   readonly control = input.required<FormControl<boolean>>();
   readonly label = input.required<string>();
+  readonly description = input('');
   readonly hint = input('');
+  readonly required = input(false, { transform: booleanAttribute });
   readonly error = input('');
 
   hasError(): boolean {
-    const control = this.control();
-    return control.invalid && (control.touched || control.dirty);
+    return shouldShowControlError(this.control());
   }
 
   getErrorText(): string {
-    const control = this.control();
-    if (control.hasError('required') || control.hasError('requiredTrue')) {
-      return this.error() || `${this.label()} is required.`;
-    }
-
-    return this.error() || 'Please confirm this option.';
+    return (
+      this.error() ||
+      getControlErrorMessage(this.control(), this.label(), 'Please confirm this option.')
+    );
   }
 }

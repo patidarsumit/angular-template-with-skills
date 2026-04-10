@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 
+import { getControlErrorMessage, shouldShowControlError } from './form-field.helpers';
 import { FormFieldOption } from './form-field.models';
 
 @Component({
@@ -10,7 +11,12 @@ import { FormFieldOption } from './form-field.models';
   imports: [CommonModule, MatRadioModule, ReactiveFormsModule],
   template: `
     <div class="app-choice-field">
-      <p class="app-choice-field__label">{{ label() }}</p>
+      <p class="app-choice-field__label">
+        {{ label() }}
+        @if (required()) {
+          <span class="app-form-field__required">*</span>
+        }
+      </p>
 
       <mat-radio-group class="app-choice-field__group" [formControl]="control()">
         @for (option of options(); track option.label) {
@@ -20,12 +26,12 @@ import { FormFieldOption } from './form-field.models';
         }
       </mat-radio-group>
 
-      @if (hint()) {
-        <p class="app-choice-field__hint">{{ hint() }}</p>
-      }
-
       @if (hasError()) {
         <p class="app-choice-field__error">{{ getErrorText() }}</p>
+      } @else if (description()) {
+        <p class="app-choice-field__hint">{{ description() }}</p>
+      } @else if (hint()) {
+        <p class="app-choice-field__hint">{{ hint() }}</p>
       }
     </div>
   `,
@@ -68,20 +74,19 @@ export class RadioFieldComponent<T = string> {
   readonly control = input.required<FormControl<T | null>>();
   readonly label = input.required<string>();
   readonly options = input.required<readonly FormFieldOption<T>[]>();
+  readonly description = input('');
   readonly hint = input('');
+  readonly required = input(false, { transform: booleanAttribute });
   readonly error = input('');
 
   hasError(): boolean {
-    const control = this.control();
-    return control.invalid && (control.touched || control.dirty);
+    return shouldShowControlError(this.control());
   }
 
   getErrorText(): string {
-    const control = this.control();
-    if (control.hasError('required')) {
-      return this.error() || `${this.label()} is required.`;
-    }
-
-    return this.error() || 'Please choose one option.';
+    return (
+      this.error() ||
+      getControlErrorMessage(this.control(), this.label(), 'Please choose one option.')
+    );
   }
 }
