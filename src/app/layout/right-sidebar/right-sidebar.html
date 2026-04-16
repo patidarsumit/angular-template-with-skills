@@ -1,0 +1,15 @@
+<aside class="app-right-sidebar" aria-label="Quick tools">
+  @for (action of actions(); track action.label) {
+    <button
+      mat-icon-button
+      type="button"
+      [attr.aria-label]="action.label"
+      [matTooltip]="action.label"
+    >
+      <mat-icon>{{ action.icon }}</mat-icon>
+    </button>
+  }
+  <button mat-icon-button type="button" aria-label="Add tool">
+    <mat-icon>add</mat-icon>
+  </button>
+</aside>

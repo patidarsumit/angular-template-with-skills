@@ -1,0 +1,47 @@
+<aside class="app-sidebar" aria-label="Primary navigation">
+  <button
+    class="app-create-action"
+    [class.app-create-action--compact]="!expanded()"
+    mat-flat-button
+    type="button"
+    aria-label="Create item"
+  >
+    <mat-icon>add</mat-icon>
+    @if (expanded()) {
+      <span>Create</span>
+    }
+  </button>
+
+  <nav class="app-nav" aria-label="Main sections">
+    @for (item of navItems(); track item.label) {
+      <a
+        class="app-nav__item"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+        [routerLink]="item.route"
+        [attr.aria-label]="expanded() ? null : item.label"
+        [matTooltip]="expanded() ? '' : item.label"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+        @if (expanded()) {
+          <span>{{ item.label }}</span>
+          @if (item.badge) {
+            <strong>{{ item.badge }}</strong>
+          }
+        }
+      </a>
+    }
+  </nav>
+
+  @if (expanded()) {
+    <div class="app-nav-group">
+      <p>Workspace</p>
+      @for (item of secondaryItems(); track item.label) {
+        <a class="app-nav__item" routerLinkActive="is-active" [routerLink]="item.route">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </div>
+  }
+</aside>

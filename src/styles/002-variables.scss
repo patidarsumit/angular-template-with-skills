@@ -25,12 +25,16 @@
   --app-shadow-sm: 0 12px 30px rgb(15 23 42 / 9%);
   --app-shadow-md: 0 24px 80px rgb(20 18 40 / 14%);
   --app-shadow-lg: 0 32px 120px rgb(20 18 40 / 18%);
-  --app-page-bg: #f6f0fa;
-  --app-page-bg-alt: #efe7f5;
+  --app-page-bg: #f8fafb;
+  --app-page-bg-alt: #f2f4f5;
+  --app-surface-base: #f8fafb;
+  --app-work-surface: #f2f4f5;
+  --app-active-surface: #d8e2ff;
   --app-surface-raised: color-mix(in srgb, var(--mat-sys-surface-container) 90%, white 10%);
   --app-surface-overlay: color-mix(in srgb, var(--mat-sys-surface) 82%, transparent);
-  --app-glow: rgb(155 102 238 / 22%);
-  --app-brand-gradient: linear-gradient(135deg, #6750a4, #7d65c1 54%, #9469ff);
+  --app-glow: rgb(26 115 232 / 12%);
+  --app-brand-gradient: linear-gradient(135deg, #005bbf, #1a73e8);
+  --app-compose-gradient: linear-gradient(135deg, #005bbf, #1a73e8);
   --app-text-muted: var(--mat-sys-on-surface-variant);
   --app-focus-ring: 0 0 0 3px color-mix(in srgb, var(--mat-sys-primary) 24%, transparent);
 }

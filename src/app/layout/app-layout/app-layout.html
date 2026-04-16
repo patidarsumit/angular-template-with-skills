@@ -1,0 +1,23 @@
+<div class="app-shell" [class.is-sidebar-expanded]="sidebarExpanded()">
+  <app-navbar
+    appName="Angular Skill"
+    [actions]="navbarActions"
+    [sidebarExpanded]="sidebarExpanded()"
+    (toggleSidebar)="toggleSidebar()"
+  />
+
+  <div class="app-shell__body">
+    <app-sidebar
+      [expanded]="sidebarExpanded()"
+      [navItems]="primaryNav"
+      [secondaryItems]="workspaceNav"
+    />
+
+    <main class="app-main" aria-label="Main content">
+      <router-outlet />
+      <app-footer />
+    </main>
+
+    <app-right-sidebar [actions]="toolActions" />
+  </div>
+</div>

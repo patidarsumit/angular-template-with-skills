@@ -1,0 +1,35 @@
+<mat-toolbar class="app-navbar">
+  <div class="app-navbar__left">
+    <button
+      mat-icon-button
+      type="button"
+      [attr.aria-label]="sidebarExpanded() ? 'Collapse navigation' : 'Expand navigation'"
+      [attr.aria-expanded]="sidebarExpanded()"
+      (click)="toggleSidebar.emit()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <a class="app-brand" href="/" aria-label="Home">
+      <span class="app-brand__mark">A</span>
+      <span>{{ appName() }}</span>
+    </a>
+  </div>
+
+  <label class="app-search">
+    <mat-icon>search</mat-icon>
+    <input type="search" placeholder="Search workspace" aria-label="Search workspace" />
+    <button mat-icon-button type="button" aria-label="Search filters">
+      <mat-icon>tune</mat-icon>
+    </button>
+  </label>
+
+  <div class="app-navbar__actions">
+    @for (action of actions(); track action.label) {
+      <button mat-icon-button type="button" [attr.aria-label]="action.label">
+        <mat-icon>{{ action.icon }}</mat-icon>
+      </button>
+    }
+    <button class="app-avatar" mat-icon-button type="button" aria-label="Account">S</button>
+  </div>
+</mat-toolbar>
